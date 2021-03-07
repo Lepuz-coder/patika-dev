@@ -1,6 +1,5 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import DoneIcon from "@material-ui/icons/Done";
 

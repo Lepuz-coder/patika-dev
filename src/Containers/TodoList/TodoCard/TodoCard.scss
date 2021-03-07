@@ -11,6 +11,24 @@
     position: relative;
     transition: all 0.2s;
 
+    &__delete {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
+
+      svg {
+        font-size: 1.4rem;
+        color: $blue-color;
+        transition: all 0.2s;
+      }
+
+      &:hover svg {
+        color: $error-color;
+        transform: scale(1.1);
+      }
+    }
+
     &--editting {
       height: 25rem;
     }
@@ -102,7 +120,6 @@
         display: flex;
         align-items: center;
         padding-bottom: 0.6rem;
-        border-bottom: 2px solid $light-grey-color;
         &:not(:first-child) {
           margin-top: 1.4rem;
         }
