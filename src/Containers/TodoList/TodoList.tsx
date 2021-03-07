@@ -15,6 +15,28 @@ export default function TodoList() {
             Emirhan Durusoy
           </div>
         </div>
+
+        <ul className="todo-list-container__settings__categories">
+          <h2 className="todo-list-container__settings__categories__header">
+            Kategoriler
+          </h2>
+
+          <li className="todo-list-container__settings__categories__category">
+            <button className="todo-list-container__settings__categories__category__button"></button>
+
+            <p className="todo-list-container__settings__categories__category__text">
+              Günüm
+            </p>
+          </li>
+
+          <li className="todo-list-container__settings__categories__category">
+            <button className="todo-list-container__settings__categories__category__button"></button>
+
+            <p className="todo-list-container__settings__categories__category__text">
+              Patika Dev
+            </p>
+          </li>
+        </ul>
       </div>
 
       <div className="todo-list-container__todo-list"></div>

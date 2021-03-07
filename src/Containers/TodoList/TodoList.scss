@@ -12,7 +12,6 @@
 }
 
 .todo-list-container {
-  padding: 2rem;
   width: 100%;
   min-height: 100%;
   margin-left: auto;
@@ -21,6 +20,10 @@
   background-color: $white-color;
 
   &__settings {
+    background-color: $medium-light-grey-color;
+    min-height: 100vh;
+    padding: 2rem;
+    width: 20%;
     &__profile {
       display: flex;
       align-items: center;
@@ -33,11 +36,61 @@
       &__full-name {
         font-size: 1.6rem;
         margin-left: 0.8rem;
-        color: $grey-color;
+        color: $blue-color;
+      }
+    }
+
+    &__categories {
+      margin-top: 4rem;
+      list-style: none;
+
+      &__header {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: $white-color;
+        display: flex;
+        flex-direction: column;
+        &::after {
+          content: "";
+          width: 40%;
+          height: 2px;
+          display: block;
+          margin-top: 0.7rem;
+          background-color: $blue-color;
+        }
+      }
+
+      &__category {
+        display: flex;
+        align-items: center;
+        &:not(:first-child) {
+          margin-top: 1.4rem;
+        }
+        &__button {
+          margin-right: 1rem;
+          width: 1.4rem;
+          height: 1.4rem;
+          background-color: $white-color;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          transition: all 0.2s;
+          position: relative;
+          &:hover {
+            background-color: $blue-color;
+          }
+        }
+
+        &__text {
+          font-size: 1.4rem;
+          color: $white-color;
+        }
       }
     }
   }
 
   &__todo-list {
+    background-color: $grey-color;
+    width: 80%;
   }
 }
