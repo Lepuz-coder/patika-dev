@@ -1,0 +1,25 @@
+@import "../../../scss/variables.scss";
+
+.todo-list-container {
+  &__menu {
+    background-color: $white-color;
+    min-height: 100vh;
+    padding: 2rem;
+    width: 20%;
+    &__profile {
+      display: flex;
+      align-items: center;
+      &__icon {
+        svg {
+          width: 3.2rem;
+        }
+      }
+
+      &__full-name {
+        font-size: 1.6rem;
+        margin-left: 0.8rem;
+        color: $grey-color;
+      }
+    }
+  }
+}

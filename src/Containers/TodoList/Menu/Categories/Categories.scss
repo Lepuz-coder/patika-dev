@@ -1,0 +1,57 @@
+@import "../../../../scss/variables.scss";
+
+.todo-list-container__menu {
+  &__categories {
+    margin-top: 4rem;
+    list-style: none;
+
+    &__header {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: $grey-color;
+      display: flex;
+      flex-direction: column;
+      &::after {
+        content: "";
+        width: 40%;
+        height: 2px;
+        display: block;
+        margin-top: 0.7rem;
+        background-color: $blue-color;
+      }
+    }
+
+    &__category {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:not(:first-child) {
+        margin-top: 1.4rem;
+      }
+      &__button {
+        margin-right: 1rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        background-color: $medium-light-grey-color;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+      }
+
+      &:hover &__button {
+        background-color: $blue-color;
+      }
+
+      &__text {
+        font-size: 1.4rem;
+        color: $grey-color;
+      }
+
+      &:hover &__text {
+        color: $blue-color;
+      }
+    }
+  }
+}
