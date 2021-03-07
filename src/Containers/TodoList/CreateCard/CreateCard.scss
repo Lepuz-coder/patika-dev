@@ -1,0 +1,27 @@
+@import "../../../scss/variables.scss";
+
+.create-card {
+  width: 30%;
+  height: 22rem;
+  background-color: $white-color;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 10px 10px 0px $blue-color;
+  }
+
+  &__header {
+    font-size: 2rem;
+    color: $grey-color;
+    text-align: center;
+    letter-spacing: 10px;
+  }
+}

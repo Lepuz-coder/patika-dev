@@ -11,5 +11,10 @@
   &__todo-list {
     background-color: $grey-color;
     width: 80%;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    overflow-y: scroll;
   }
 }

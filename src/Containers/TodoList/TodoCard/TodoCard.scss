@@ -1,0 +1,157 @@
+@import "../../../scss/variables.scss";
+
+.todo-list-container__todo-list {
+  &__card {
+    width: 31%;
+    height: 22rem;
+    background-color: $white-color;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 0.5rem;
+    position: relative;
+    transition: all 0.2s;
+
+    &--editting {
+      height: 25rem;
+    }
+
+    &__save-button-box {
+      margin-top: 1rem;
+      width: 40%;
+      margin-left: auto;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &__button-box {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &__mini-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        &__button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $white-color;
+          padding: 0.4rem;
+          border: 1px solid $grey-color;
+          border-radius: 4px;
+          transition: all 0.2s;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          &:not(:last-child) {
+            margin-right: 1rem;
+          }
+
+          & svg {
+            color: $blue-color;
+          }
+        }
+      }
+    }
+
+    &__title {
+      color: $grey-color;
+      font-size: 1.6rem;
+      padding-bottom: 6px;
+      border-bottom: 3px solid $blue-color;
+    }
+
+    &__todos {
+      margin-top: 1.6rem;
+      list-style: none;
+      overflow-y: scroll;
+      height: 15rem;
+      padding-bottom: 1rem;
+
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        display: none;
+      }
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $light-grey-color;
+      }
+
+      &__todo {
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid $light-grey-color;
+        &:not(:first-child) {
+          margin-top: 1.4rem;
+        }
+
+        &__delete {
+          cursor: pointer;
+          align-self: flex-start;
+          svg {
+            color: $blue-color;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+          }
+
+          &:hover svg {
+            color: $error-color;
+            transform: scale(1.1);
+          }
+        }
+
+        &__checkbox {
+          width: 1rem;
+          height: 1rem;
+          background-color: transparent;
+          border: 2px solid $medium-light-grey-color;
+          outline: none;
+          margin-right: 0.7rem;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            font-size: 1rem;
+            color: $white-color;
+          }
+
+          &:hover {
+            background-color: $blue-color;
+            border-color: $blue-color;
+          }
+        }
+
+        &__text {
+          width: 75%;
+          font-size: 1.3rem;
+          color: $grey-color;
+        }
+      }
+    }
+  }
+}

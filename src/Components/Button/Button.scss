@@ -27,4 +27,11 @@
       box-shadow: 2px 4px 0px rgba($light-blue-color, 1);
     }
   }
+
+  &--isnot-hovered {
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
 }
