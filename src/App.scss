@@ -1,0 +1,20 @@
+@import "./scss/mixins.scss";
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "VT323", monospace;
+  font-size: 16px;
+  box-sizing: border-box;
+  @include second-break {
+    font-size: 14px;
+  }
+  @include third-break {
+    font-size: 12px;
+  }
+
+  @include fourth-break {
+    font-size: 10px;
+  }
+}

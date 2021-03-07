@@ -1,0 +1,35 @@
+@mixin first-break {
+  @media only screen and (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin second-break {
+  @media only screen and (max-width: 853px) {
+    @content;
+  }
+}
+
+@mixin third-break {
+  @media only screen and (max-width: 721px) {
+    @content;
+  }
+}
+
+@mixin login-break {
+  @media only screen and (max-width: 566px) {
+    @content;
+  }
+}
+
+@mixin mobile-break {
+  @media only screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin fourth-break {
+  @media only screen and (max-width: 400px) {
+    @content;
+  }
+}

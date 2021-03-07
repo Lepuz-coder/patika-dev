@@ -1,0 +1,30 @@
+@import "../../scss/variables.scss";
+
+.button {
+  padding: 0.7rem 2rem;
+  background-color: $blue-color;
+  color: $white-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  outline: none;
+  border: none;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 2px 4px 0px rgba($blue-color, 1);
+  }
+
+  &--disabled {
+    background-color: $light-blue-color;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 2px 4px 0px rgba($light-blue-color, 1);
+    }
+  }
+}

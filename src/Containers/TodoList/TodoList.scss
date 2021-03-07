@@ -1,0 +1,43 @@
+@import "../../scss/variables.scss";
+
+.todo-list-page-bg {
+  background-image: linear-gradient(
+    to right bottom,
+    $blue-color,
+    $medium-light-blue-color
+  );
+  width: 100vw;
+  height: 100vh;
+  padding-top: 5rem;
+}
+
+.todo-list-container {
+  padding: 2rem;
+  width: 100%;
+  min-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  background-color: $white-color;
+
+  &__settings {
+    &__profile {
+      display: flex;
+      align-items: center;
+      &__icon {
+        svg {
+          width: 3.2rem;
+        }
+      }
+
+      &__full-name {
+        font-size: 1.6rem;
+        margin-left: 0.8rem;
+        color: $grey-color;
+      }
+    }
+  }
+
+  &__todo-list {
+  }
+}

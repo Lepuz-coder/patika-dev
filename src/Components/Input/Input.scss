@@ -1,0 +1,51 @@
+@import "../../scss/variables.scss";
+
+.input-box {
+  position: relative;
+  &--top {
+    &-1 {
+      margin-top: 1rem;
+    }
+    &-2 {
+      margin-top: 2rem;
+    }
+    &-3 {
+      margin-top: 3rem;
+    }
+  }
+  &__input {
+    width: 100%;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid $light-grey-color;
+    padding-bottom: 0.5rem;
+    transition: all 0.4s;
+    &--focus {
+      border-color: $medium-light-blue-color;
+    }
+
+    &--error {
+      border-color: $error-color;
+    }
+  }
+
+  &__label {
+    cursor: text;
+    position: absolute;
+    left: 0px;
+    color: $grey-color;
+    transition: all 0.2s;
+    &--focus {
+      transform: translateY(-20px);
+      color: $medium-light-blue-color;
+      font-size: 0.9rem;
+    }
+    &--error {
+      color: $error-color;
+    }
+  }
+
+  &__error-text {
+    color: $error-color;
+  }
+}
