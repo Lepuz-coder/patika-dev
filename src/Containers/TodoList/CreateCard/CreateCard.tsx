@@ -55,6 +55,9 @@ export default function CreateCard() {
           style={{ width: 300, marginTop: "1rem" }}
           freeSolo
           noOptionsText="Yeni Kategori"
+          onChange={(event, value) => {
+            if (value) setCategory(value);
+          }}
           renderInput={(params) => (
             <TextField
               {...params}

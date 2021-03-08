@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../../Components/Button/Button";
 import "./TodoCard.scss";
 import ShareIcon from "@material-ui/icons/Share";
@@ -8,14 +8,36 @@ import Todo from "./Todo/Todo";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { TextField } from "@material-ui/core";
 import { isMobile } from "react-device-detect";
-
+import swal from "sweetalert2";
+import { AppContext } from "../../../context/AppStore";
 type TodoCardType = {
   title: string;
+  index: number;
 };
 
-export default function TodoCard({ title }: TodoCardType) {
+export default function TodoCard({ title, index }: TodoCardType) {
+  const { todoState, setCards } = useContext(AppContext);
   const [isEditting, setIsEditting] = useState<boolean>(false);
   const [isHovering, setIsHovering] = useState<boolean>(false);
+
+  const deleteHandler = async () => {
+    const swalRes = await swal.fire({
+      icon: "warning",
+      title: "Emin misin ?",
+      text: "Bu projenizi kalıcı olarak silmek istiyor musunuz ?",
+      confirmButtonText: "Evet",
+      showCancelButton: true,
+      cancelButtonText: "İptal",
+    });
+
+    if (swalRes.isConfirmed) {
+      const copyCards = [...todoState.cards];
+
+      copyCards.splice(index, 1);
+
+      setCards(copyCards);
+    }
+  };
 
   return (
     <div
@@ -28,7 +50,10 @@ export default function TodoCard({ title }: TodoCardType) {
       }}
     >
       {isEditting && (
-        <div className="todo-list-container__todo-list__card__delete">
+        <div
+          className="todo-list-container__todo-list__card__delete"
+          onClick={deleteHandler}
+        >
           <DeleteIcon />
         </div>
       )}
@@ -48,7 +73,10 @@ export default function TodoCard({ title }: TodoCardType) {
               <FileCopyIcon />
             </div>
 
-            <div className="todo-list-container__todo-list__card__overlay__mini-buttons__button">
+            <div
+              className="todo-list-container__todo-list__card__overlay__mini-buttons__button"
+              onClick={deleteHandler}
+            >
               <HighlightOffIcon />
             </div>
           </div>

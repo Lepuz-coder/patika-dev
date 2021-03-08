@@ -14,7 +14,7 @@ export default function TodoList() {
 
       <div className="todo-list-container__todo-list">
         {todoState.cards.map((card, index) => (
-          <TodoCard key={index} title={card.title} />
+          <TodoCard key={index} title={card.title} index={index} />
         ))}
         <CreateCard />
       </div>
