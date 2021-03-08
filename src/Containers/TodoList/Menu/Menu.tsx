@@ -1,13 +1,15 @@
 import { useMediaQuery } from "@material-ui/core";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ProfileIcon from "../../../Components/ProfileIcon/ProfileIcon";
 import Categories from "./Categories/Categories";
 import CloseIcon from "@material-ui/icons/Close";
 import "./Menu.scss";
 import { type } from "node:os";
+import { AppContext } from "../../../context/AppStore";
 
 export default function Menu() {
+  const { todoState } = useContext(AppContext);
   const [isOpen, setİsOpen] = useState(false);
   const isMenuBreak = useMediaQuery("(max-width:1300px)");
 
@@ -64,7 +66,7 @@ export default function Menu() {
               </div>
 
               <div className="todo-list-container__menu__profile__full-name">
-                Emirhan Durusoy
+                {todoState.name} {todoState.surname}
               </div>
             </div>
 

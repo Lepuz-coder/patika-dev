@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../../../context/AppStore";
 import "./Categories.scss";
+import Category from "./Category/Category";
 
 export default function Categories() {
-  const { todoState } = useContext(AppContext);
+  const { todoState, setSelectedCategories } = useContext(AppContext);
 
   return (
     <ul className="todo-list-container__menu__categories">
@@ -11,14 +12,8 @@ export default function Categories() {
         Kategoriler
       </h2>
 
-      {todoState.categories.map((category) => (
-        <li className="todo-list-container__menu__categories__category">
-          <button className="todo-list-container__menu__categories__category__button"></button>
-
-          <p className="todo-list-container__menu__categories__category__text">
-            {category}
-          </p>
-        </li>
+      {todoState.categories.map((category, index) => (
+        <Category category={category} key={index} />
       ))}
     </ul>
   );

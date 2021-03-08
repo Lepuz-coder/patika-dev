@@ -13,9 +13,22 @@ export default function TodoList() {
       <Menu />
 
       <div className="todo-list-container__todo-list">
-        {todoState.cards.map((card, index) => (
-          <TodoCard key={index} title={card.title} index={index} />
-        ))}
+        {todoState.cards.map((card, index) => {
+          if (
+            todoState.selectedCategories.length > 0 &&
+            !todoState.selectedCategories.includes(card.category)
+          )
+            return null;
+
+          return (
+            <TodoCard
+              key={index}
+              title={card.title}
+              index={index}
+              cardTodos={card.todos}
+            />
+          );
+        })}
         <CreateCard />
       </div>
     </div>

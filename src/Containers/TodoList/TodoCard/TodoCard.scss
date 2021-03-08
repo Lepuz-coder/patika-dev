@@ -112,6 +112,7 @@
       margin-top: 1.6rem;
       list-style: none;
       overflow-y: scroll;
+      overflow-x: hidden;
       height: 15rem;
       padding-bottom: 1rem;
 
@@ -140,7 +141,8 @@
           margin-top: 1.4rem;
         }
 
-        &__delete {
+        &__delete,
+        &__add {
           cursor: pointer;
           align-self: flex-start;
           svg {
@@ -152,6 +154,12 @@
           &:hover svg {
             color: $error-color;
             transform: scale(1.1);
+          }
+        }
+
+        &__add {
+          &:hover svg {
+            color: $blue-color;
           }
         }
 
@@ -177,12 +185,20 @@
             background-color: $blue-color;
             border-color: $blue-color;
           }
+
+          &--checked {
+            background-color: $blue-color;
+            border-color: $blue-color;
+          }
         }
 
         &__text {
           width: 75%;
           font-size: 1.3rem;
           color: $grey-color;
+          &--checked {
+            text-decoration-line: line-through;
+          }
           @include todo-fourth-break {
             font-size: 1.1rem;
           }

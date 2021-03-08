@@ -6,6 +6,7 @@ export type todoInitalValuesType = {
   surname: string | null;
   cards: CardType[];
   categories: string[];
+  selectedCategories: string[];
 };
 
 export const todoInitalValues: todoInitalValuesType = {
@@ -13,6 +14,7 @@ export const todoInitalValues: todoInitalValuesType = {
   surname: null,
   cards: [],
   categories: [],
+  selectedCategories: [],
 };
 
 export type todoValuesType = {
@@ -20,6 +22,7 @@ export type todoValuesType = {
   setUserData: (value: { name: string; surname: string }) => void;
   setCards: (value: CardType[]) => void;
   setCategories: (value: string[]) => void;
+  setSelectedCategories: (value: string[]) => void;
 };
 
 export default (
@@ -33,4 +36,6 @@ export default (
     dispatch({ type: TodoActions.SET_CARDS, value }),
   setCategories: (value: string[]) =>
     dispatch({ type: TodoActions.SET_CATEGORIES, value }),
+  setSelectedCategories: (value: string[]) =>
+    dispatch({ type: TodoActions.SET_SELECTED_CATEGORIES, value }),
 });

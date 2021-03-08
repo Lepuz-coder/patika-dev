@@ -28,6 +28,7 @@ export default function CreateCard() {
     copyCards.push({
       title,
       category,
+      todos: [],
     });
 
     setCards(copyCards);

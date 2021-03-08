@@ -40,16 +40,20 @@
         position: relative;
       }
 
-      &:hover &__button {
-        background-color: $blue-color;
-      }
-
       &__text {
         font-size: 1.4rem;
         color: $grey-color;
       }
 
       &:hover &__text {
+        color: $blue-color;
+      }
+
+      &--selected &__button {
+        background-color: $blue-color;
+      }
+
+      &--selected &__text {
         color: $blue-color;
       }
     }

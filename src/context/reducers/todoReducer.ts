@@ -22,6 +22,11 @@ export default (
         ...state,
         categories: action.value,
       };
+    case TodoActions.SET_SELECTED_CATEGORIES:
+      return {
+        ...state,
+        selectedCategories: action.value,
+      };
 
     default:
       return state;
