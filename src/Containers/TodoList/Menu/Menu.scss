@@ -1,4 +1,5 @@
 @import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
 
 .todo-list-container {
   &__menu {
@@ -6,6 +7,69 @@
     min-height: 100vh;
     padding: 2rem;
     width: 20%;
+    overflow-x: hidden;
+
+    @include todo-first-break {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 20rem;
+      z-index: 100;
+    }
+
+    @include todo-second-break {
+      width: 25rem;
+    }
+
+    &__bg {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 80;
+    }
+
+    &__mobile-hamburger {
+      background-color: $white-color;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 100%;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 90;
+      &__bar {
+        width: 2rem;
+        height: 3px;
+        background-color: $grey-color;
+        &:not(:first-child) {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    &__mobile-close {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $grey-color;
+      border-radius: 100%;
+      padding: 0.4rem;
+      svg {
+        color: $white-color;
+        font-size: 1.2rem;
+      }
+    }
+
     &__profile {
       display: flex;
       align-items: center;

@@ -7,8 +7,13 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Todo from "./Todo/Todo";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { TextField } from "@material-ui/core";
+import { isMobile } from "react-device-detect";
 
-export default function TodoCard() {
+type TodoCardType = {
+  title: string;
+};
+
+export default function TodoCard({ title }: TodoCardType) {
   const [isEditting, setIsEditting] = useState<boolean>(false);
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -28,7 +33,7 @@ export default function TodoCard() {
         </div>
       )}
 
-      {isHovering && !isEditting && (
+      {((isHovering && !isEditting) || (isMobile && !isEditting)) && (
         <div className="todo-list-container__todo-list__card__overlay">
           <div className="todo-list-container__todo-list__card__overlay__button-box">
             <Button clickHandler={() => setIsEditting(true)} text="EDIT" />
@@ -52,15 +57,13 @@ export default function TodoCard() {
 
       {isEditting ? (
         <TextField
-          value="Anasayfa için yapılacaklar"
+          value={title}
           multiline={true}
           rowsMax={4}
           style={{ width: "80%" }}
         />
       ) : (
-        <h2 className="todo-list-container__todo-list__card__title">
-          Anasayfa için yapılacaklar
-        </h2>
+        <h2 className="todo-list-container__todo-list__card__title">{title}</h2>
       )}
 
       <ul className="todo-list-container__todo-list__card__todos">

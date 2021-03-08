@@ -12,6 +12,16 @@ export default (
         name: action.value.name,
         surname: action.value.surname,
       };
+    case TodoActions.SET_CARDS:
+      return {
+        ...state,
+        cards: action.value,
+      };
+    case TodoActions.SET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.value,
+      };
 
     default:
       return state;

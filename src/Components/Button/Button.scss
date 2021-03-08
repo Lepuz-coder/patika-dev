@@ -34,4 +34,13 @@
       box-shadow: none;
     }
   }
+
+  &--danger {
+    background-color: $error-color;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 2px 4px 0px rgba($error-color, 1);
+    }
+  }
 }

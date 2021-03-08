@@ -1,4 +1,5 @@
 @import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
 
 .todo-list-container {
   width: 100%;
@@ -16,5 +17,16 @@
     flex-wrap: wrap;
     height: 100vh;
     overflow-y: scroll;
+    @include todo-first-break {
+      width: 100%;
+    }
+
+    @include todo-second-break {
+      justify-content: space-between;
+    }
+
+    @include todo-fifth-break {
+      justify-content: center;
+    }
   }
 }

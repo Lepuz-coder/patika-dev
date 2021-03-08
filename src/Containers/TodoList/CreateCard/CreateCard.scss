@@ -1,4 +1,5 @@
 @import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
 
 .create-card {
   width: 30%;
@@ -12,10 +13,31 @@
   justify-content: space-between;
   transition: all 0.2s;
   cursor: pointer;
+  @include todo-second-break {
+    width: 40%;
+  }
+
+  @include todo-third-break {
+    width: 45%;
+  }
+
+  @include todo-fifth-break {
+    width: 75%;
+  }
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: 10px 10px 0px $blue-color;
+  }
+
+  &--creating {
+    justify-content: start;
+    cursor: default;
+    box-shadow: 10px 10px 0px $blue-color;
+
+    &:hover {
+      transform: none;
+    }
   }
 
   &__header {
@@ -23,5 +45,18 @@
     color: $grey-color;
     text-align: center;
     letter-spacing: 10px;
+    margin-bottom: 3rem;
+  }
+
+  &__button-box {
+    &--creating {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+
+      & button {
+        width: 40%;
+      }
+    }
   }
 }

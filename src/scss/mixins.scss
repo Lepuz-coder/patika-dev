@@ -1,3 +1,33 @@
+@mixin todo-first-break {
+  @media only screen and (max-width: 1300px) {
+    @content;
+  }
+}
+
+@mixin todo-second-break {
+  @media only screen and (max-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin todo-third-break {
+  @media only screen and (max-width: 870px) {
+    @content;
+  }
+}
+
+@mixin todo-fourth-break {
+  @media only screen and (max-width: 620px) {
+    @content;
+  }
+}
+
+@mixin todo-fifth-break {
+  @media only screen and (max-width: 520px) {
+    @content;
+  }
+}
+
 @mixin first-break {
   @media only screen and (max-width: 1000px) {
     @content;

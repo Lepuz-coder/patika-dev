@@ -6,6 +6,7 @@ type ButtonType = {
   isDisabled?: boolean;
   isNotHovered?: boolean;
   clickHandler: () => void;
+  color?: "blue" | "danger";
 };
 
 export default function Button({
@@ -13,12 +14,13 @@ export default function Button({
   isDisabled,
   clickHandler,
   isNotHovered,
+  color,
 }: ButtonType) {
   return (
     <button
       className={`button ${isDisabled ? "button--disabled" : null} ${
         isNotHovered ? "button--isnot-hovered" : null
-      }`}
+      } ${color ? `button--${color}` : null}`}
       onClick={!isDisabled ? clickHandler : undefined}
     >
       {text}
