@@ -7,16 +7,20 @@ type TodoType = {
   text: string;
   isEditting: boolean;
   updateTodoHandler: (value: string, index: number) => void;
+  updateTodoBoolHandler: (isTodo: boolean, index: number) => void;
   deleteHandler: (index: number) => void;
   index: number;
+  isTodo: boolean;
 };
 
 export default function Todo({
   text,
   isEditting,
   updateTodoHandler,
+  updateTodoBoolHandler,
   deleteHandler,
   index,
+  isTodo,
 }: TodoType) {
   const [isChecked, setİsChecked] = useState<boolean>(false);
 
@@ -24,11 +28,11 @@ export default function Todo({
     <li className="todo-list-container__todo-list__card__todos__todo">
       <button
         className={`todo-list-container__todo-list__card__todos__todo__checkbox ${
-          isChecked
+          isTodo
             ? "todo-list-container__todo-list__card__todos__todo__checkbox--checked"
             : null
         }`}
-        onClick={() => setİsChecked((oldState) => !oldState)}
+        onClick={() => updateTodoBoolHandler(!isTodo, index)}
       >
         <DoneIcon />
       </button>

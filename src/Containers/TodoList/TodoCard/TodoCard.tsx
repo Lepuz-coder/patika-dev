@@ -11,18 +11,30 @@ import { isMobile } from "react-device-detect";
 import swal from "sweetalert2";
 import { AppContext } from "../../../context/AppStore";
 import CreateTodo from "./CreateTodo/CreateTodo";
+import { TodoType } from "../../../types/TodoType";
 type TodoCardType = {
+  id: number;
   title: string;
   index: number;
-  cardTodos: string[];
+  cardTodos: TodoType[];
 };
 
-export default function TodoCard({ title, index, cardTodos }: TodoCardType) {
-  const { todoState, setCards } = useContext(AppContext);
+export default function TodoCard({
+  title,
+  index,
+  cardTodos,
+  id,
+}: TodoCardType) {
+  const {
+    todoState,
+    setCards,
+    setCategories,
+    setSelectedCategories,
+  } = useContext(AppContext);
   const [isEditting, setIsEditting] = useState<boolean>(false);
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const [newTitle, setNewTitle] = useState("");
-  const [todos, setTodos] = useState<string[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>([]);
 
   const deleteHandler = async () => {
     const swalRes = await swal.fire({
@@ -37,7 +49,37 @@ export default function TodoCard({ title, index, cardTodos }: TodoCardType) {
     if (swalRes.isConfirmed) {
       const copyCards = [...todoState.cards];
 
-      copyCards.splice(index, 1);
+      const cardIndex = copyCards.findIndex((card) => card.id === id);
+
+      const cardCategory = copyCards[cardIndex].category;
+
+      copyCards.splice(cardIndex, 1);
+
+      const categoryCardIndex = copyCards.findIndex(
+        (card) => card.category === cardCategory
+      );
+
+      //Eğer ki kategoriye sahip kart kalmadıysa siliyoruz
+      if (categoryCardIndex === -1) {
+        const copySelectedCategories = [...todoState.selectedCategories];
+        const selectedCategoryIndex = copySelectedCategories.findIndex(
+          (selCat) => selCat === cardCategory
+        );
+        if (selectedCategoryIndex !== -1) {
+          copySelectedCategories.splice(selectedCategoryIndex, 1);
+        }
+
+        const copyCategories = [...todoState.categories];
+
+        const categoryIndex = copyCategories.findIndex(
+          (cat) => cat === cardCategory
+        );
+
+        copyCategories.splice(categoryIndex, 1);
+
+        setCategories(copyCategories);
+        setSelectedCategories(copySelectedCategories);
+      }
 
       setCards(copyCards);
     }
@@ -46,8 +88,10 @@ export default function TodoCard({ title, index, cardTodos }: TodoCardType) {
   const onSaveHandler = () => {
     const copyCards = [...todoState.cards];
 
-    copyCards[index].title = newTitle;
-    copyCards[index].todos = todos;
+    const cardIndex = copyCards.findIndex((card) => card.id === id);
+
+    copyCards[cardIndex].title = newTitle;
+    copyCards[cardIndex].todos = todos;
 
     setCards(copyCards);
     setIsEditting(false);
@@ -55,14 +99,27 @@ export default function TodoCard({ title, index, cardTodos }: TodoCardType) {
 
   const addTodoHandler = (todo: string) => {
     if (todo.trim().length > 0) {
-      setTodos((oldTodos) => [...oldTodos, todo]);
+      setTodos((oldTodos) => [
+        ...oldTodos,
+        {
+          name: todo,
+          isTodo: false,
+        },
+      ]);
     }
   };
 
   const updateTodoHandler = (newText: string, index: number) => {
     const copyTodos = [...todos];
 
-    copyTodos[index] = newText;
+    copyTodos[index].name = newText;
+    setTodos(copyTodos);
+  };
+
+  const updateTodoBoolHandler = (isTodo: boolean, index: number) => {
+    const copyTodos = [...todos];
+
+    copyTodos[index].isTodo = isTodo;
     setTodos(copyTodos);
   };
 
@@ -82,6 +139,7 @@ export default function TodoCard({ title, index, cardTodos }: TodoCardType) {
       className={`todo-list-container__todo-list__card ${
         isEditting ? "todo-list-container__todo-list__card--editting" : null
       }`}
+      onMouseOver={() => setIsHovering(true)}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => {
         setIsHovering(false);
@@ -134,15 +192,17 @@ export default function TodoCard({ title, index, cardTodos }: TodoCardType) {
       )}
 
       <ul className="todo-list-container__todo-list__card__todos">
-        <CreateTodo addTodoHandler={addTodoHandler} />
+        {isEditting && <CreateTodo addTodoHandler={addTodoHandler} />}
         {todos.map((todo, index) => (
           <Todo
             key={index}
             isEditting={isEditting}
-            text={todo}
+            text={todo.name}
             updateTodoHandler={updateTodoHandler}
+            updateTodoBoolHandler={updateTodoBoolHandler}
             deleteHandler={deleteTodoHandler}
             index={index}
+            isTodo={todo.isTodo}
           />
         ))}
       </ul>

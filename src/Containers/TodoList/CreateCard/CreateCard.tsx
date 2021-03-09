@@ -21,7 +21,12 @@ export default function CreateCard() {
       setCategories(copyCategories);
     }
 
+    let newId: number = 1;
+
+    if (copyCards.length > 0) newId = copyCards[copyCards.length - 1].id + 1;
+
     copyCards.push({
+      id: newId,
       title,
       category,
       todos: [],

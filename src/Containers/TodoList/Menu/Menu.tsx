@@ -66,7 +66,7 @@ export default function Menu() {
               </div>
 
               <div className="todo-list-container__menu__profile__full-name">
-                {todoState.name} {todoState.surname}
+                {localStorage.getItem("name")} {localStorage.getItem("surname")}
               </div>
             </div>
 
