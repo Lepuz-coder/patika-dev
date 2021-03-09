@@ -13,10 +13,6 @@ export default function CreateCard() {
   const [title, setTitle] = useState("");
 
   const createHandler = () => {
-    console.log({
-      title,
-      category: "test",
-    });
     const copyCards = [...todoState.cards];
     const copyCategories = [...todoState.categories];
 
