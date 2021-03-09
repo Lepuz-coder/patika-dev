@@ -12,9 +12,11 @@ export default function Categories() {
         Kategoriler
       </h2>
 
-      <p className="todo-list-container__menu__categories__sub-text">
-        Kategori bulunmamaktadır
-      </p>
+      {todoState.categories.length <= 0 && (
+        <p className="todo-list-container__menu__categories__sub-text">
+          Kategori bulunmamaktadır
+        </p>
+      )}
 
       {todoState.categories.map((category, index) => (
         <Category category={category} key={index} />
